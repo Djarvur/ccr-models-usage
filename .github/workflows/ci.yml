@@ -61,4 +61,5 @@ jobs:
           cache: true
       - uses: golangci/golangci-lint-action@v7
         with:
-          version: v2.5.0
+          # Must be built with Go >= 1.26 to lint go 1.26.4 (see go.mod).
+          version: v2.7.0
