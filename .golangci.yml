@@ -1,0 +1,56 @@
+version: "2"
+linters:
+  default: all
+  disable:
+    - wsl
+    - ireturn
+    - depguard
+    - exhaustruct
+    - wsl_v5
+    - cyclop
+    - lll
+    - varnamelen
+    - perfsprint
+    - modernize
+    - dupword
+  exclusions:
+    rules:
+      - path: _test\.go
+        linters:
+          - dupl
+          - err113
+          - errcheck
+          - funlen
+          - gocognit
+          - goconst
+          - gocyclo
+          - gomnd
+          - gosec
+          - maintidx
+          - mnd
+          - nestif
+          - noctx
+          - noinlineerr
+          - paralleltest
+          - revive
+          - tagliatelle
+          - testpackage
+          - tparallel
+          - wrapcheck
+      - path: zz_generated.*\.go
+        linters:
+          - all
+  settings:
+    tagliatelle:
+      # CCR config uses PascalCase `Providers` and snake_case fields.
+      # We do not want camelCase rewriting.
+      case:
+        rules:
+          json: ""
+    wsl_v5:
+      allow-first-in-block: true
+      allow-whole-block: false
+      branch-max-lines: 2
+
+run:
+  timeout: 5m
